@@ -1,0 +1,221 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    /*padding-top: 10px;
+    padding-bottom: 20px;*/
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /*table-layout: fixed;*/
+}
+
+    table caption {
+        font-size: 1.5em;
+        /*margin: .5em 0 .75em;*/
+        margin: 0;
+    }
+
+    table tr {
+        background: #f8f8f8;
+        border: 1px solid #ddd;
+        /*padding: .35em;*/
+        padding: 0;
+        margin: 0;
+    }
+
+    table th,
+    table td {
+        /*padding: .625em;*/
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+
+    table th {
+        /*font-size: .85em;*/
+        /*letter-spacing: .1em;*/
+        /*text-transform: uppercase;*/
+    }
+
+    table thead {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background: #fff;
+    }
+
+@media screen and (max-width: 800px) {
+    table {
+        border: 0;
+    }
+
+        table caption {
+            /*font-size: 1.3em;*/
+        }
+
+        table thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            /*width: 1px;*/
+        }
+
+        table tr {
+            /*border-bottom: 3px solid #ddd;*/
+            border-bottom: 0 solid #ddd;
+            display: block;
+            /*margin-bottom: .625em;*/
+            margin-bottom: 0;
+        }
+
+        table td {
+            /*border-bottom: 1px solid #ddd;*/
+            border-bottom: 0 solid #ddd;
+            display: block;
+            /*font-size: .8em;*/
+            text-align: right;
+        }
+
+            table td:before {
+                content: attr(data-label);
+                float: left;
+                /*font-weight: bold;
+        text-transform: uppercase;*/
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
+}
+
+table.tablealignleft {
+    text-align: left;
+}
+
+table td.alignleft {
+    text-align: left;
+    padding-left: 0;
+}
+
+table.bigBord {
+    border: 5px;
+}
+
+td.alignright {
+    text-align: right;
+}
+
+.gi-2x {
+    font-size: .5em;
+}
+
+.table-condensed {
+    font-size: x-small;
+    margin: 0;
+    padding: 0;
+}
+
+.font-in-detail {
+    font-size: small;
+}
+
+.paginationclass {
+    margin: 19px 28px;
+}
+
+    .paginationclass span {
+        margin-left: 15px;
+        display: inline-block;
+    }
+
+.pagination-controle li {
+    display: inline-block;
+}
+
+.pagination-controle button {
+    font-size: 12px;
+    margin-top: -26px;
+    cursor: pointer;
+}
+
+.pagination {
+    margin: 5px 12px !important;
+}
+
+button:disabled {
+    color: black;
+}
+
+#resize input {
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+a:link {
+    color: #187db8;
+}
+
+a:visited {
+    color: #1c427b;
+}
+
+a:hover {
+    color: #187db8;
+}
+
+a:active {
+    color: #187db8;
+}
+
+a:focus {
+    color: #187db8;
+}
+
+.even {
+    background: rgba(201, 201, 201, 201);
+}
+
+.table-condensed-xx {
+    font-size: 6px;
+    margin: 0;
+    padding: 0;
+}
+
+.font-in-detail-xx {
+    font-size: x-small;
+    font-weight: 600;
+}
+
+#header-fixed {
+    position: fixed;
+    top: 0px;
+    display: none;
+    background-color: white;
+}

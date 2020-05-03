@@ -1,0 +1,100 @@
+<div class="col-md-11">
+   <h4 style="margin: 30px;">Work Schedules</h4>
+   <table class="table table-striped table-hover" style="margin: 20px; padding-left: 10px; padding-right: 10px; 
+   border: solid 1px; font: Work Sans;">
+      <thead >
+        <tr style="background-color: rgb(185, 179, 179)">
+         <td scope="col" width="20%" style="border-left: dashed 1px; ">Title</td>
+         <td scope="col" width="20%" style="border-left: dashed 1px; text-align: center">Description</td>
+         <td scope="col" width="12%" style="border-left: dashed 1px; min-width: 85px; text-align: center">TimeStart</td>
+         <td scope="col" width="12%" style="border-left: dashed 1px; min-width: 85px; text-align: center">TimeEnd</td>
+         <td scope="col" width="10%" style="border-left: dashed 1px; text-align: center">Location</td>
+         <td scope="col" width="6%" style="border-left: dashed 1px; text-align: center">Type</td>
+         <td scope="col" width="6%" style="border-left: dashed 1px; text-align: center">Status</td>
+         <td scope="col" width="14%" style="border-left: dashed 1px; text-align: center">Attendees</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let item of workScheduleList; let i = index" valign="top"  >     
+          <td style=" border-left: dashed 1px; ">{{item.Title}}</td>
+          <td style="padding-left: 5px; border-left: dashed 1px; ">{{item.Description}}</td>
+          <td style="padding-left: 5px; border-left: dashed 1px; ">{{item.TimeStart|date:'MM/dd/yyyy hh:mm a'}}</td>
+          <td style="padding-left: 5px; border-left: dashed 1px; ">{{item.TimeEnd|date:'MM/dd/yyyy hh:mm a'}}</td>
+          <td style="padding-left: 5px; border-left: dashed 1px; ">{{item.Location}}</td>
+          <td style="padding-left: 5px; border-left: dashed 1px; ">{{item.Type}}</td>
+          <td style="padding-left: 5px; border-left: dashed 1px; ">{{item.Status}}</td>
+          <td style="text-align: center;">&nbsp; <button type="button" class="btn btn-primary" (click)="ToggleAreaAttendee(item.Id); open(mymodal)"  style="background: rgb(189, 186, 186);" >Show Attendees</button> &nbsp;
+          <ng-template #mymodal let-modal>
+            <div class="modal-header">
+               <h4 class="modal-title" id="modal-basic-title">{{item.Title}} Attendees</h4>
+               <button type="button" class="btn btn-primary" style="background: rgb(189, 186, 186);" aria-label="Close" (click)="modal.dismiss('Cross click'); ToggleAreaAttendee(item.Id);">
+                  <span aria-hidden="true" style="color: #000">×</span>
+               </button>
+             </div>
+             <div class="modal-body"> 
+               <table class="table table-striped table-hover" style=" border: dashed 1px; font: Work Sans;" *ngIf='attendeeShow[i]' >
+                 <tbody>
+                   <tr valign="top" *ngFor = "let itm of workScheduleByMeetingIdList[i]" >
+                     <td style="white-space: nowrap; border-left: dashed 1px; white-space: nowrap;padding-top: 5px;padding-bottom: 5px; ">
+                       <img src="../../../assets/images/{{itm.Avatar}}" alt="image" width=65 height=80 style="float: left;" /><div style="float:left" >&nbsp;&nbsp;{{itm.Name}} <br/>&nbsp;&nbsp;UserId: {{itm.UserId}} <br/>&nbsp;&nbsp;Profession: {{itm.Profession}}<br/>&nbsp;&nbsp; Department: {{itm.Department}}</div></td> 
+                   </tr>
+                 </tbody>  
+               </table>
+             </div>
+           </ng-template>
+         </td>     
+       </tr>
+     </tbody>
+   </table>
+</div>
+
+<div class="col-md-11" style="margin-top: 70px;">
+   <h4 style="margin:30px" >User Schedules</h4>
+   <table class="table table-striped table-hover" style="margin: 20px; padding-left: 10px; padding-right: 10px; 
+   border: solid 1px; font: Work Sans;">
+      <thead >
+        <tr style="background-color: rgb(185, 179, 179)">
+         <td scope="col" width="30%" style="padding-left: 60px; ">User</td>
+         <td scope="col" width="70%" style="text-align: center; width: 50px;">Department</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let item of userList;" valign="top"  >     
+          <td style="white-space: nowrap; border-left: dashed 1px; white-space: nowrap;padding-top: 5px;padding-bottom: 5px; height: 150px " (click) ='ToggleArea(item.Id)'>
+             <img src="../../../assets/images/{{item.Avatar}}" alt="image" width=65 height=80 style="float: left;" />
+             <div style="float:left" >&nbsp;&nbsp;{{item.Name}} &nbsp;{{item.Id}} <br/>&nbsp;&nbsp;{{item.Profession}}<br/>&nbsp;&nbsp;<button type="button" class="btn btn-primary" style="background: rgb(189, 186, 186);" >Show Schedule</button></div></td> 
+          <td >&nbsp;&nbsp; {{ item.Department}}
+           <table class="table table-striped table-hover" style=" border: dashed 1px; font: Work Sans;" *ngIf='scheduleShow[item.Id-1]' >
+             <thead >
+               <tr style="background-color: rgb(185, 179, 179); ">
+                  <td scope="col" width="20%" style="border-left: dashed 1px; text-align: center; ">Title</td>
+                  <td scope="col" width="20%" style="border-left: dashed 1px; text-align: center;">Description</td>
+                  <td scope="col" width="14%" style="border-left: dashed 1px; min-width: 85px; text-align: center;">TimeStart</td>
+                  <td scope="col" width="14%" style="border-left: dashed 1px; min-width: 85px; text-align: center;">TimeEnd</td>
+                  <td scope="col" width="12%" style="border-left: dashed 1px; text-align: center;">Location</td>
+                  <td scope="col" width="8%" style="border-left: dashed 1px; text-align: center;">Type</td>
+                  <td scope="col" width="8%" style="border-left: dashed 1px; text-align: center;">Status</td>
+               </tr>
+             </thead>
+             <tbody>
+               <tr valign="top" *ngFor = "let itm of userScheduleByUserIdList[item.Id-1]">
+                  <td style="padding-left: 5px; border-left: dashed 1px; ">{{itm.Title}}</td>
+                  <td style="padding-left: 5px; border-left: dashed 1px; ">{{itm.Description}}</td>
+                  <td style="padding-left: 5px; border-left: dashed 1px; ">{{itm.TimeStart|date:'MM/dd/yyyy hh:mm a'}}</td>
+                  <td style="padding-left: 5px; border-left: dashed 1px; ">{{itm.TimeEnd|date:'MM/dd/yyyy hh:mm a'}}</td>
+                  <td style="padding-left: 5px; border-left: dashed 1px; ">{{itm.Location}}</td>
+                  <td style="padding-left: 5px; border-left: dashed 1px; ">{{itm.Type}}</td>
+                  <td style="padding-left: 5px; border-left: dashed 1px; ">{{itm.Status}}</td>
+               </tr>
+             </tbody>  
+           </table>
+         </td>
+       </tr>
+      </tbody>
+   </table>
+</div>
+
+
+
+
+
